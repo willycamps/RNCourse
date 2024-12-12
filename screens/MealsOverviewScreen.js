@@ -40,7 +40,7 @@ export default MealsOverviewScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 2,
     padding: 16,
   },
 });
