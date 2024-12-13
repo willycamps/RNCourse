@@ -4,23 +4,42 @@ import {
     View,
     Text,
   } from 'react-native';
-  
+
+import CardFront from '../components/CardFront';
+import CardBack from '../components/CardBack';
+
 import CardFlip from 'react-native-card-flip';
 
 function CardFlipScreen({route}){
 const cardId = route.params.cardId;
 
+function renderCardFront(itemData) {
+
+        const item = itemData.item;
+        const mealItemProps = {
+          title: item.title,
+          imageUrl: item.imageUrl,
+          affordability: item.affordability,
+          complexity: item.complexity,
+          duration: item.duration
+        };
+        return (
+          <MealItem {...mealItemProps} />
+        );
+      }
 
 return (
 
 <View style={styles.container}>
+
     <CardFlip style={styles.cardContainer} ref={card => (this.card = card)}  >
 
         <TouchableOpacity
-          activeOpacity={1}
+           activeOpacity={1}
           style={[styles.card, styles.card1]}
-          onPress={() => this.card.flip()}>
-          <Text style={styles.label}>AB</Text>
+          onPress={() => this.card.flip()} >
+
+                <Text style={styles.label}>AB</Text> 
 
         </TouchableOpacity>
         
