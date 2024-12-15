@@ -3,6 +3,7 @@ import {
     StyleSheet,
     View,
     Text,
+    Button,
   } from 'react-native';
 
 import CardFront from '../components/CardFront';
@@ -10,21 +11,22 @@ import CardBack from '../components/CardBack';
 
 import CardFlip from 'react-native-card-flip';
 
+const image = {uri: 'https://legacy.reactjs.org/logo-og.png'};
+
 function CardFlipScreen({route}){
 const cardId = route.params.cardId;
+
 
 function renderCardFront(itemData) {
 
         const item = itemData.item;
-        const mealItemProps = {
-          title: item.title,
+        const cardItemProps = {
           imageUrl: item.imageUrl,
-          affordability: item.affordability,
-          complexity: item.complexity,
-          duration: item.duration
+          title: item.title,
+          promotion: item.promotion,
         };
         return (
-          <MealItem {...mealItemProps} />
+          <CardFront {...cardItemProps} />
         );
       }
 
@@ -32,25 +34,27 @@ return (
 
 <View style={styles.container}>
 
-    <CardFlip style={styles.cardContainer} ref={card => (this.card = card)}  >
+  <CardFlip style={styles.cardContainer} ref={card => (this.card = card)} >
 
-        <TouchableOpacity
-           activeOpacity={1}
+  <TouchableOpacity
+          activeOpacity={1}
           style={[styles.card, styles.card1]}
-          onPress={() => this.card.flip()} >
-
-                <Text style={styles.label}>AB</Text> 
+          onPress={() => this.card.flip()} backgroundImage={image}>
+            
+            <View>
+                  <CardFront title={"Coffee House"} promotion={"Llevate 2 Cafes por la compra de 1"} imageUrl={""}  />
+              </View>
 
         </TouchableOpacity>
-        
+    
         <TouchableOpacity
           activeOpacity={1}
           style={[styles.card, styles.card2]}
-          onPress={() => this.card.flip()}>
+          onPress={() => this.card.flip()} >
           <Text style={styles.label}>CD</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> 
 
-      </CardFlip>
+  </CardFlip> 
   
 </View>
 );
@@ -69,11 +73,13 @@ const styles = StyleSheet.create({
       cardContainer: {
         width: 320,
         height: 470,
+        backgroundColor:'#d9ead3',
+        backgroundImage: image,
       },
       card: {
         width: 320,
         height: 470,
-        backgroundColor: '#FE474C',
+        backgroundImage: image,
         borderRadius: 5,
         shadowColor: 'rgba(0,0,0,0.5)',
         shadowOffset: {
@@ -83,10 +89,13 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.5,
       },
       card1: {
-        backgroundColor: '#FE474C',
+     
+        backgroundImage: image,
       },
       card2: {
-        backgroundColor: '#FEB12C',
+        backgroundColor: '#48d218',
+
+        backgroundImage: image,
       },
       label: {
         lineHeight: 470,
