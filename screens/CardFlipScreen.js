@@ -11,17 +11,20 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 import CardFrontItem from '../components/CardFrontItem';
 import CardBackItem from '../components/CardBackItem.js';
+
 import {CARDS} from '../data/d-data.js'
 
 const image = {uri: 'https://legacy.reactjs.org/logo-og.png'};
 
 function CardFlipScreen({ route }){
-
-const cardId = route.params.cardId;
+  
+const cardId = route.params.categoryId; //route.params.cardId;
 
 const displayedCard = CARDS.filter((CardFrontItem) => {
   return CardFrontItem.id.indexOf(cardId) >= 0;
 });
+
+//console.log(Object.values(displayedCard[0]))
 
 const [isFlipped, setIsFlipped] = useState(false);
 
@@ -62,9 +65,18 @@ return (
                 clickable={false}
             >
                 {/* Front */}
-                <View  style={[styles.card, styles.card1]}>
-                
-                </View>
+               {/*  <View  style={[styles.card, styles.card1]} > */}
+                    <CardFrontItem  
+                            title={displayedCard[0].title}
+                            promotion={displayedCard[0].promotion}
+                            logo={displayedCard[0].logo}
+                            backgroundImageFront={displayedCard[0].backgroundImageFront}
+                            backgroundImageBack = {displayedCard[0].backgroundImageBack} 
+                            backgroundFront = {displayedCard[0].backgroundFront}
+                            backgroundBack = {displayedCard[0].backgroundBack}
+                    />
+                    
+               {/*  </View> */}
 
                 {/* Back */}
                 <View style={[styles.card, styles.card2]}>
@@ -93,37 +105,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5FCFF',
       },
       cardContainer: {
+        flex:2,
         marginTop: 20,
         width: 320,
         height: 470,
-        padding: 5,
-        
       },
-      card: {
-        flex: 1,
-        width: 320,
-        height: 470,
-        borderRadius: 30,
       
-        //backgroundColor: 'grey',
-
-        // To prevent shadow from overflowing
-        overflow: 'hidden', 
-
-        shadowColor: 'rgba(0,0,0,0.5)',
-        shadowOffset: {
-          width: 0,
-          height: 1,
-        },
-        shadowOpacity: 0.5,
-        
-
-  
-      },
-      card1: {
-     
-        backgroundColor: '#6fa8dc',
-      },
       card2: {
         backgroundColor: '#48d218',
 
