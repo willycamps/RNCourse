@@ -3,58 +3,80 @@ import {
     StyleSheet,
     View,
     Text,
-    Button,
   } from 'react-native';
+  import React, { useState } from 'react';
 
-import CardFront from '../components/CardFront';
-import CardBack from '../components/CardBack';
+import FlipCard from 'react-native-flip-card';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
-import CardFlip from 'react-native-card-flip';
+import CardFrontItem from '../components/CardFrontItem';
+import CardBackItem from '../components/CardBackItem.js';
+import {CARDS} from '../data/d-data.js'
 
 const image = {uri: 'https://legacy.reactjs.org/logo-og.png'};
 
-function CardFlipScreen({route}){
+function CardFlipScreen({ route }){
+
 const cardId = route.params.cardId;
 
+const displayedCard = CARDS.filter((CardFrontItem) => {
+  return CardFrontItem.id.indexOf(cardId) >= 0;
+});
+
+const [isFlipped, setIsFlipped] = useState(false);
+
+    const toggleFlip = () => {
+        setIsFlipped(!isFlipped);
+    };
 
 function renderCardFront(itemData) {
 
         const item = itemData.item;
+
         const cardItemProps = {
-          imageUrl: item.imageUrl,
+          id: item.id,
           title: item.title,
           promotion: item.promotion,
+          logo: item.logo,
+          backgroundImageFront: item.backgroundFront,
+          backgroundImageBack: item.backgroundImageBack,
+          backgroundFront: item.backgroundFront,
+          backgroundBack: item.backgroundBack,
         };
         return (
-          <CardFront {...cardItemProps} />
+          <CardFrontItem {...cardItemProps} />
         );
-      }
+      };
 
 return (
 
 <View style={styles.container}>
 
-  <CardFlip style={styles.cardContainer} ref={card => (this.card = card)} >
+  <FlipCard
+                style={[styles.cardContainer]}
+                friction={20}
+                perspective={1000}
+                flipHorizontal={true}
+                flipVertical={false}
+                flip={isFlipped}
+                clickable={false}
+            >
+                {/* Front */}
+                <View  style={[styles.card, styles.card1]}>
+                
+                </View>
 
-  <TouchableOpacity
-          activeOpacity={1}
-          style={[styles.card, styles.card1]}
-          onPress={() => this.card.flip()} backgroundImage={image}>
-            
-            <View>
-                  <CardFront title={"Coffee House"} promotion={"Llevate 2 Cafes por la compra de 1"} imageUrl={""}  />
-              </View>
+                {/* Back */}
+                <View style={[styles.card, styles.card2]}>
 
-        </TouchableOpacity>
-    
-        <TouchableOpacity
-          activeOpacity={1}
-          style={[styles.card, styles.card2]}
-          onPress={() => this.card.flip()} >
-          <Text style={styles.label}>CD</Text>
-        </TouchableOpacity> 
+                 
+                </View>
 
-  </CardFlip> 
+            </FlipCard>
+
+            <TouchableOpacity style={styles.button} onPress={toggleFlip}>
+                <MaterialCommunityIcons name="rotate-360" size={34} color="white" />
+            </TouchableOpacity>
   
 </View>
 );
@@ -71,31 +93,40 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5FCFF',
       },
       cardContainer: {
+        marginTop: 20,
         width: 320,
         height: 470,
-        backgroundColor:'#d9ead3',
-        backgroundImage: image,
+        padding: 5,
+        
       },
       card: {
+        flex: 1,
         width: 320,
         height: 470,
-        backgroundImage: image,
-        borderRadius: 5,
+        borderRadius: 30,
+      
+        //backgroundColor: 'grey',
+
+        // To prevent shadow from overflowing
+        overflow: 'hidden', 
+
         shadowColor: 'rgba(0,0,0,0.5)',
         shadowOffset: {
           width: 0,
           height: 1,
         },
         shadowOpacity: 0.5,
+        
+
+  
       },
       card1: {
      
-        backgroundImage: image,
+        backgroundColor: '#6fa8dc',
       },
       card2: {
         backgroundColor: '#48d218',
 
-        backgroundImage: image,
       },
       label: {
         lineHeight: 470,
@@ -105,4 +136,11 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         backgroundColor: 'transparent',
       },
+      
+      button: {
+        backgroundColor: 'green',
+        padding: "5px 20px 5px 20px",
+        borderRadius: 10,
+        marginTop: 5,
+    },
   });

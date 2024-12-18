@@ -5,23 +5,29 @@ import {
   } from 'react-native';
 
   
-  import CardFlip from 'react-native-card-flip';
- 
+  //import CardFlip from 'react-native-card-flip';
+  //const image = require('/MealsApp/assets/backgroundImage/camp-01_640x480.png');
+  
 
-function CardFront({ title, imageUrl, promotion }) {
+function CardFrontItem({title,
+  promotion,
+  logo,
+  backgroundImageFront,
+  backgroundImageBack,
+  backgroundFront,
+  backgroundBack }) {
 
     return(
         <View style={styles.card}>
-  
+          
+        <ImageBackground source={backgroundImageFront} resizeMode="cover" style={styles.image}>
           <View>
-             {/*  <Image source={{ uri: imageUrl }} style={styles.image} /> */}
-              <Image style={styles.tinyLogo} source={require('/MealsApp/assets/favicon.png')}/>
+              {/* <Image style={styles.tinyLogo} source={require('/MealsApp/assets/favicon.png')}/>
               <Text style={styles.title}>{title}</Text>
-              <Text style={styles.promotion}>{promotion}</Text>
-              
+              <Text style={styles.promotion}>{promotion}</Text>  */}
           </View>
 
-            <Button
+            {/* <Button
               title="Basic Button"
               buttonStyle={{
                 backgroundColor: 'rgba(78, 116, 289, 1)',
@@ -32,14 +38,20 @@ function CardFront({ title, imageUrl, promotion }) {
                 marginHorizontal: 50,
                 marginVertical: 10,
               }}
-            />
+            /> */}
+            </ImageBackground>
         </View>
     );
 }
 
-export default CardFront;
+export default CardFrontItem;
 
 const styles = StyleSheet.create({
+  image: {
+    flex: 1,
+   
+    width: '100%', height: '100%',
+  },
   backgroundImage: {
     flex: 1,
     resizeMode: 'cover', // or 'stretch'
@@ -63,7 +75,6 @@ const styles = StyleSheet.create({
   card: {
     width: 320,
     height: 470,
-    backgroundColor: 'transparent',
     borderRadius: 5,
     shadowColor: 'rgba(0,0,0,0.5)',
     shadowOffset: {
