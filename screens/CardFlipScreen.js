@@ -24,7 +24,12 @@ const displayedCard = CARDS.filter((CardFrontItem) => {
   return CardFrontItem.id.indexOf(cardId) >= 0;
 });
 
-//console.log(Object.values(displayedCard[0]))
+
+//
+// console.log("CategoryID: "+ cardId);
+//console.log("Displayed Card: "+ JSON.stringify(displayedCard[0]) );
+
+//CARDS.map((item, index) => console.log (index));
 
 const [isFlipped, setIsFlipped] = useState(false);
 
@@ -79,9 +84,9 @@ return (
                {/*  </View> */}
 
                 {/* Back */}
-                <View style={[styles.card, styles.card2]}>
+                <View style={[styles.card, styles.card1]}>
 
-                 
+                  
                 </View>
 
             </FlipCard>
@@ -111,9 +116,22 @@ const styles = StyleSheet.create({
         height: 470,
       },
       
-      card2: {
-        backgroundColor: '#48d218',
-
+      card: {
+        flex: 1,
+        width: 320,
+        height: 470,
+        borderRadius: 30,
+        // To prevent shadow from overflowing
+        overflow: 'hidden', 
+        shadowColor: 'rgba(0,0,0,0.5)',
+        shadowOffset: {
+          width: 0,
+          height: 1,
+        },
+        shadowOpacity: 0.5,    
+      },
+      card1: {
+        backgroundColor: '#6fa8dc',
       },
       label: {
         lineHeight: 470,

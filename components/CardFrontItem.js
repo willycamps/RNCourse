@@ -5,7 +5,6 @@ import {
     ImageBackground, Image,
   } from 'react-native';
 
- //const backgroundImageFront = require('/MealsApp/assets/backgroundImage/camp-01_640x480.png');
   
 function CardFrontItem({ title,
   promotion,
@@ -15,23 +14,18 @@ function CardFrontItem({ title,
   backgroundFront,
   backgroundBack}) {
 
-    //console.log({logo});
-    //let txt=txt.concat("'",logo,"'");
-    //console.log(txt);
-    //const image_background = require( {backgroundImageFront});
-    //console.log(image_background);
-
+ 
     return(
-        <View style={[styles.card, styles.card1]}> 
+         <View style={[styles.card, styles.card1]}>  
             
-          <ImageBackground source={backgroundImageFront} resizeMode="stretch" style={styles.image}>
+          <ImageBackground source={backgroundImageFront.en2} resizeMode="cover" style={styles.image}>
             <View style={styles.innerContainer}>
-              {/*  <Image style={styles.tinyLogo} source={{require:{logo}}} /> */} 
+             {/*  <Image style={styles.tinyLogo} source={{require:{logo}}} />  */}
               <Text style={styles.title}>{title}</Text>
               <Text style={styles.promotion}>{promotion}</Text> 
             </View>
           </ImageBackground>
-         </View>
+          </View> 
     );
 }
 
@@ -40,7 +34,6 @@ export default CardFrontItem;
 const styles = StyleSheet.create({
   image: {
     flex: 1,
-    //sswidth: '100%', height: '100%',
   },
   backgroundImage: {
     flex: 1,
@@ -83,7 +76,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#6fa8dc',
   },
   innerContainer: {
-    flex: 1,
+    flex: 0,
     padding: 1,
     borderRadius: 1,
     justifyContent: 'center',
