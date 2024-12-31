@@ -70,7 +70,6 @@ return (
                 clickable={false}
             >
                 {/* Front */}
-               {/*  <View  style={[styles.card, styles.card1]} > */}
                     <CardFrontItem  
                             title={displayedCard[0].title}
                             promotion={displayedCard[0].promotion}
@@ -80,19 +79,14 @@ return (
                             backgroundFront = {displayedCard[0].backgroundFront}
                             backgroundBack = {displayedCard[0].backgroundBack}
                     />
-                    
-               {/*  </View> */}
 
                 {/* Back */}
-                <View style={[styles.card, styles.card1]}>
-
-                  
-                </View>
+               <CardBackItem />
 
             </FlipCard>
 
             <TouchableOpacity style={styles.button} onPress={toggleFlip}>
-                <MaterialCommunityIcons name="rotate-360" size={34} color="white" />
+                <MaterialCommunityIcons name="rotate-360" size={34} color="black" />
             </TouchableOpacity>
   
 </View>
@@ -143,7 +137,7 @@ const styles = StyleSheet.create({
       },
       
       button: {
-        backgroundColor: 'green',
+       /* backgroundColor: 'green',*/
         padding: "5px 20px 5px 20px",
         borderRadius: 10,
         marginTop: 5,

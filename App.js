@@ -26,7 +26,7 @@ export default function App() {
             name="MealsCategories"
             component={CategoriesScreen}
             options={{
-              title: 'All Categories',
+              title: 'Cards',
             }}
           />
           <Stack.Screen name="MealsOverview" component={CardFlipScreen}  options={{

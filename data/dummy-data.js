@@ -2,10 +2,10 @@ import Category from '../models/category';
 import Meal from '../models/meal';
 
 export const CATEGORIES = [
-  new Category('c1', 'Coffee', '#f5428d'),
-  new Category('c2', 'Travel', '#f54242'),
-  new Category('c3', 'Food', '#f5a442'),
-  new Category('c4', 'Camping', '#f5d142'),
+  new Category('c1', 'Card 1', '#f5428d'),
+  new Category('c2', 'Card 2', '#f54242'),
+  new Category('c3', 'Card 3', '#f5a442'),
+  new Category('c4', 'Card 4', '#f5d142'),
  /*  new Category('c5', 'Light & Lovely', '#368dff'),
   new Category('c6', 'Exotic', '#41d95d'),
   new Category('c7', 'Breakfast', '#9eecff'),

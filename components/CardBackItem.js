@@ -5,23 +5,20 @@ import {
   } from 'react-native';
 
   function CardBack({route}){
-    const catId = route.params.cardId;
+    /*const catId = route.params.cardId;*/
 
     return(
     
-            <View style={styles.innerContainer}>
-    
-                      <View>
-                        <Image source={{ uri: imageUrl }} style={styles.image} />
-                        <Text style={styles.title}>{title}</Text>
-                      </View>
-    
-                      <View style={styles.details}>
-                        <Text style={styles.detailItem}>{duration}m</Text>
-                        <Text style={styles.detailItem}>{complexity.toUpperCase()}</Text>
-                        <Text style={styles.detailItem}>{affordability.toUpperCase()}</Text>
-                      </View>
-            </View>
+      
+          <View style={[styles.card, styles.card1]}>
+              <View style={styles.header}>
+
+              </View>
+              <View style={styles.content}>
+
+              </View>
+          </View>
+      
         );
 
 
@@ -32,8 +29,36 @@ import {
   
   const styles = StyleSheet.create({
     container: {
-      flex: 2,
-      padding: 16,
+      flex: 1,
+    },
+    card: {
+      flexDirection: "column",
+      flex: 1,
+      width: 320,
+      height: 470,
+      borderRadius: 30,
+      // To prevent shadow from overflowing
+      overflow: 'hidden', 
+      shadowColor: 'rgba(0,0,0,0.5)',
+      shadowOffset: {
+        width: 0,
+        height: 1,
+      },
+      shadowOpacity: 0.5,
+           
+    },
+    card1: {
+      flexDirection: "column",
+      backgroundColor: '#f6ede0',
+       //width: '50%'
+      
+    },
+    header:{
+      flex:1,
+      flexDirection:"row",
+    },
+    content:{
+
     },
   });
   
